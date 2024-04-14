@@ -103,12 +103,15 @@ namespace Engine.ViewModels
             {
                 CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));
             }
+            
             CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(2001));
             CurrentPlayer.LearnRecipe(RecipeFactory.RecipeByID(1));
             CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3001));
             CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3002));
             CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3003));
+            
             CurrentWorld = WorldFactory.CreateWorld();
+            
             CurrentLocation = CurrentWorld.LocationAt(1, -1);
         }
         public void MoveNorth()
@@ -144,6 +147,7 @@ namespace Engine.ViewModels
             foreach (Quest quest in CurrentLocation.QuestsAvailableHere)
             {
                 QuestStatus questToComplete =
+                    
                     CurrentPlayer.Quests.FirstOrDefault(q => q.PlayerQuest.ID == quest.ID &&
                                                              !q.IsCompleted);
                 if (questToComplete != null)

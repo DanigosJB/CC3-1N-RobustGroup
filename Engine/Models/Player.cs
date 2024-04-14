@@ -56,9 +56,12 @@ namespace Engine.Models
             int originalLevel = Level;
             Level = (ExperiencePoints / 100) + 1;
             if (Level != originalLevel)
+
             {
+               
                 MaximumHitPoints = Level * 10;
                 OnLeveledUp?.Invoke(this, System.EventArgs.Empty);
+
             }
         }
     }

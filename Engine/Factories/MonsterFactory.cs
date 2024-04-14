@@ -15,6 +15,7 @@ namespace Engine.Factories
                     AddLootItem(wolf, 9001, 25);
                     AddLootItem(wolf, 9002, 75);
                     return wolf;
+                
                 case 2:
                     Monster demonsoldier =
                         new Monster("Demon Soldier", "DemonSoldier.png", 5, 300, 5, 1);
@@ -22,6 +23,7 @@ namespace Engine.Factories
                     AddLootItem(demonsoldier, 9003, 25);
                     AddLootItem(demonsoldier, 9004, 75);
                     return demonsoldier;
+                
                 case 3:
                     Monster sauron =
                         new Monster("Demon King Sauron", "DemonKing.png", 10, 1000, 10, 3);
@@ -29,6 +31,7 @@ namespace Engine.Factories
                     AddLootItem(sauron, 9005, 25);
                     AddLootItem(sauron, 9006, 75);
                     return sauron;
+
                 default:
                     throw new ArgumentException(string.Format("MonsterType '{0}' does not exist", monsterID));
             }

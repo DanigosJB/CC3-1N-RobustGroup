@@ -6,11 +6,12 @@ namespace Engine.Factories
         internal static World CreateWorld()
         {
             World newWorld = new World();
-            
+
             newWorld.AddLocation(1, 1, "FrostBite Peaks",
                 "Where the wolf sleeps.",
                 "FrostBitePeaks.png");
-            
+
+
             newWorld.LocationAt(1, 1).AddMonster(1, 100);
            
             newWorld.AddLocation(-1, -1, "Silvermoon Grave",
@@ -20,7 +21,7 @@ namespace Engine.Factories
             newWorld.LocationAt(-1, -1).AddMonster(2, 100);
             
             newWorld.AddLocation(0, -1, "Ironhold Citadel",
-                "Where Slyvanwood The Healer resides",
+                "Where Sylvanwood The Healer resides",
                 "IronholdCitadel.png");
             
             newWorld.AddLocation(-1, 0, "Glimmering Shores",
