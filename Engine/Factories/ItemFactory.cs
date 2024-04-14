@@ -9,21 +9,32 @@ namespace Engine.Factories
         private static readonly List<GameItem> _standardGameItems = new List<GameItem>();
         static ItemFactory()
         {
-            BuildWeapon(1001, "Pointy Stick", 1, 1, 2);
-            BuildWeapon(1002, "Rusty Sword", 5, 1, 3);
-            BuildWeapon(1501, "Snake fangs", 0, 0, 2);
-            BuildWeapon(1502, "Rat claws", 0, 0, 2);
-            BuildWeapon(1503, "Spider fangs", 0, 0, 4);
-            BuildHealingItem(2001, "Granola bar", 5, 2);
-            BuildMiscellaneousItem(3001, "Oats", 1);
-            BuildMiscellaneousItem(3002, "Honey", 2);
-            BuildMiscellaneousItem(3003, "Raisins", 2);
-            BuildMiscellaneousItem(9001, "Snake fang", 1);
-            BuildMiscellaneousItem(9002, "Snakeskin", 2);
-            BuildMiscellaneousItem(9003, "Rat tail", 1);
-            BuildMiscellaneousItem(9004, "Rat fur", 2);
-            BuildMiscellaneousItem(9005, "Spider fang", 1);
-            BuildMiscellaneousItem(9006, "Spider silk", 2);
+            BuildWeapon(1001, "Rusty Sword", 100, 15, 2);
+            BuildWeapon(1002, "Steel Sword", 200, 25, 3);
+            BuildWeapon(1003, "Bow", 200, 25, 3);
+            BuildWeapon(1004, "Staff", 200, 25, 3);
+            BuildWeapon(1005, "Spear", 200, 25, 3);
+            BuildWeapon(1006, "Cronus' Scythe", 1000, 50, 3);
+            BuildWeapon(1007, "Apollo's Bow", 1000, 50, 3);
+            BuildWeapon(1008, "Holy Grimoire", 1000, 60, 3);
+            BuildWeapon(1009, "Pulse Bow", 2500, 100, 3);
+            BuildWeapon(1010, "Elder Wand", 2500, 100, 3);
+            BuildWeapon(1011, "Enchanted Sword", 5000, 250, 3);
+            BuildWeapon(1012, "Legendary Murasama", 10000, 600, 3);
+            BuildWeapon(1501, "Wolf Fangs", 0, 0, 75);
+            BuildWeapon(1502, "Demon Claws", 0, 0, 100);
+            BuildWeapon(1503, "Demon King Sword", 0, 0, 200);
+            BuildHealingItem(2001, "Health Potion", 75, 200);
+            BuildMiscellaneousItem(3001, "Lemongrass", 50);
+            BuildMiscellaneousItem(3002, "Wolf Blood", 100);
+            BuildMiscellaneousItem(3003, "Holy Water", 150);
+            BuildMiscellaneousItem(9001, "Wolf Claw", 50);
+            BuildMiscellaneousItem(9002, "Wolf Fang", 100);
+            BuildMiscellaneousItem(9003, "Wolf Fur", 250);
+            BuildMiscellaneousItem(9004, "Demon Horn", 250);
+            BuildMiscellaneousItem(9005, "Demon Heart", 500);
+            BuildMiscellaneousItem(9006, "Demon King Heart", 1000);
+            BuildMiscellaneousItem(9007, "Demon King Head", 1000);
         }
         public static GameItem CreateGameItem(int itemTypeID)
         {

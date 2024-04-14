@@ -20,17 +20,21 @@ namespace Engine.Factories
             newWorld.LocationAt(-1, -1).AddMonster(2, 100);
             
             newWorld.AddLocation(0, -1, "Ironhold Citadel",
-                "here Slyvanwood The Healer resides",
+                "Where Slyvanwood The Healer resides",
                 "IronholdCitadel.png");
             
             newWorld.AddLocation(-1, 0, "Glimmering Shores",
                 "Eldoria the Side Quest giver protects her Kingdom.",
                 "GlimmeringShores.jpg");
-            
+
+            newWorld.LocationAt(-1, 0).QuestsAvailableHere.Add(QuestFactory.GetQuestByID(2));
+
             newWorld.AddLocation(0, 0, "Moon Shadow Keep",
                 "Where Garen is located.",
                 "MoonShadowKeep.png");
-            
+
+            newWorld.LocationAt(0, 0).QuestsAvailableHere.Add(QuestFactory.GetQuestByID(3));
+
             newWorld.AddLocation(1, -1, "Mysthaven",
                 "This is your Headquarters.",
                 "Headquarters.jpg");

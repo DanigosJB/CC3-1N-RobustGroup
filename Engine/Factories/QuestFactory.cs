@@ -22,6 +22,31 @@ namespace Engine.Factories
                                   itemsToComplete,
                                   250, 500,
                                   rewardItems));
+
+            List<ItemQuantity> itemsToComplete2 = new List<ItemQuantity>();
+            List<ItemQuantity> rewardItems2 = new List<ItemQuantity>();
+
+            itemsToComplete2.Add(new ItemQuantity(9004, 5));
+            
+            _quests.Add(new Quest(2,
+                                  "Obtain 5 Demon Hearts",
+                                  "Banishing the Tainted",
+                                   itemsToComplete2,
+                                   500, 1000,
+                                   rewardItems2));
+
+            List<ItemQuantity> itemsToComplete3 = new List<ItemQuantity>();
+            List<ItemQuantity> rewardItems3 = new List<ItemQuantity>();
+
+            itemsToComplete3.Add(new ItemQuantity(9006, 1));
+
+            _quests.Add(new Quest(3,
+                                  "Obtain 1 Demon King Heart",
+                                  "Free Yggdrasil",
+                                   itemsToComplete3,
+                                   10000, 1000000,
+                                   rewardItems3));
+
         }
         internal static Quest GetQuestByID(int id)
         {
