@@ -45,6 +45,8 @@ namespace Engine.Factories
                 "This is where Peter the Merchant trades.",
                 "DemonKingdomGate.jpg");
 
+           newWorld.LocationAt(0, 1).TraderHere = TraderFactory.GetTraderByName("Peter");
+
            
             newWorld.AddLocation(-1, 1, "Demon Castle",
                 "Where the ominous Demon King Sauron plans his devious attacks.",

@@ -1,50 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Engine.Actions;
 using Engine.Models;
 namespace Engine.Factories
 {
     public static class ItemFactory
     {
-        private static List<GameItem> _standardGameItems;
+        private static readonly List<GameItem> _standardGameItems = new List<GameItem>();
         static ItemFactory()
         {
-            _standardGameItems = new List<GameItem>();
-
-            _standardGameItems.Add(new Weapon(1000, "Rusty Sword", 50, 10, 20));
-            _standardGameItems.Add(new Weapon(1001, "Steel Sword", 200, 20, 50));
-            _standardGameItems.Add(new Weapon(1002, "Bow", 200, 50, 70));
-            _standardGameItems.Add(new Weapon(1003, "Staff", 200, 50, 100));
-            _standardGameItems.Add(new Weapon(1004, "Spear", 250, 50, 100));
-            _standardGameItems.Add(new Weapon(1005, "Cronus' Scythe", 1500, 150, 225));
-            _standardGameItems.Add(new Weapon(1006, "Apollo's Bow", 1000, 125, 180));
-            _standardGameItems.Add(new Weapon(1007, "Holy Grimoire", 1000, 100, 170));
-            _standardGameItems.Add(new Weapon(1008, "Pulse Bow", 5000, 185, 250));
-            _standardGameItems.Add(new Weapon(1009, "Elder Wand", 5000, 180, 250));
-            _standardGameItems.Add(new Weapon(1010, "Enchanted Sword", 5000, 200, 300));
-            _standardGameItems.Add(new Weapon(1011, "Legendary Murasama", 10000, 500, 1000));
-            _standardGameItems.Add(new GameItem(9001, "Wolf Fang",50));
-            _standardGameItems.Add(new GameItem(9002, "Wolf Claw",100));
-            _standardGameItems.Add(new GameItem(9003, "Wolf Fur",200));
-            _standardGameItems.Add(new GameItem(9004, "Demon Heart",500));
-            _standardGameItems.Add(new GameItem(9005, "Demon Horn",250));
-            _standardGameItems.Add(new GameItem(9006, "Demon King Heart",1000));
-            _standardGameItems.Add(new GameItem(9007, "Demon King Head",1000));
+            BuildWeapon(1001, "Pointy Stick", 1, 1, 2);
+            BuildWeapon(1002, "Rusty Sword", 5, 1, 3);
+            BuildWeapon(1501, "Snake fangs", 0, 0, 2);
+            BuildWeapon(1502, "Rat claws", 0, 0, 2);
+            BuildWeapon(1503, "Spider fangs", 0, 0, 4);
+            BuildHealingItem(2001, "Granola bar", 5, 2);
+            BuildMiscellaneousItem(3001, "Oats", 1);
+            BuildMiscellaneousItem(3002, "Honey", 2);
+            BuildMiscellaneousItem(3003, "Raisins", 2);
+            BuildMiscellaneousItem(9001, "Snake fang", 1);
+            BuildMiscellaneousItem(9002, "Snakeskin", 2);
+            BuildMiscellaneousItem(9003, "Rat tail", 1);
+            BuildMiscellaneousItem(9004, "Rat fur", 2);
+            BuildMiscellaneousItem(9005, "Spider fang", 1);
+            BuildMiscellaneousItem(9006, "Spider silk", 2);
         }
         public static GameItem CreateGameItem(int itemTypeID)
         {
-            GameItem standardItem = _standardGameItems.FirstOrDefault(item => item.ItemTypeID == itemTypeID);
-            if (standardItem != null)
-            {
-                if (standardItem is Weapon)
-                {
-                    return (standardItem as Weapon).Clone();
-                }
-                return standardItem.Clone();
-            }
-            return null;
+            return _standardGameItems.FirstOrDefault(item => item.ItemTypeID == itemTypeID)?.Clone();
+        }
+        private static void BuildMiscellaneousItem(int id, string name, int price)
+        {
+            _standardGameItems.Add(new GameItem(GameItem.ItemCategory.Miscellaneous, id, name, price));
+        }
+        private static void BuildWeapon(int id, string name, int price,
+                                        int minimumDamage, int maximumDamage)
+        {
+            GameItem weapon = new GameItem(GameItem.ItemCategory.Weapon, id, name, price, true);
+            weapon.Action = new AttackWithWeapon(weapon, minimumDamage, maximumDamage);
+            _standardGameItems.Add(weapon);
+        }
+        private static void BuildHealingItem(int id, string name, int price, int hitPointsToHeal)
+        {
+            GameItem item = new GameItem(GameItem.ItemCategory.Consumable, id, name, price);
+            item.Action = new Heal(item, hitPointsToHeal);
+            _standardGameItems.Add(item);
+        }
+        public static string ItemName(int itemTypeID)
+        {
+            return _standardGameItems.FirstOrDefault(i => i.ItemTypeID == itemTypeID)?.Name ?? "";
         }
     }
 }

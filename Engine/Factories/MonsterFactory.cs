@@ -9,29 +9,26 @@ namespace Engine.Factories
             switch (monsterID)
             {
                 case 1:
-                    Monster wolf =
-                        new Monster("Wolf", "Wolf.png", 250, 250, 25, 50, 50, 10);
-                    AddLootItem(wolf, 9002, 30);
-                    AddLootItem(wolf, 9001, 70);
-
-                    return wolf;
-
+                    Monster snake =
+                        new Monster("Snake", "Snake.png", 4, 4, 5, 1);
+                    snake.CurrentWeapon = ItemFactory.CreateGameItem(1501);
+                    AddLootItem(snake, 9001, 25);
+                    AddLootItem(snake, 9002, 75);
+                    return snake;
                 case 2:
-                    Monster demonsoldier =
-                        new Monster("Demon Soldier", "DemonSoldier.png", 500, 500, 50, 100, 100, 100);
-                    AddLootItem(demonsoldier, 9005, 15);
-                    AddLootItem(demonsoldier, 9005, 85);
-
-                    return demonsoldier;
-
+                    Monster rat =
+                        new Monster("Rat", "Rat.png", 5, 5, 5, 1);
+                    rat.CurrentWeapon = ItemFactory.CreateGameItem(1502);
+                    AddLootItem(rat, 9003, 25);
+                    AddLootItem(rat, 9004, 75);
+                    return rat;
                 case 3:
-                    Monster DemonKing =
-                        new Monster("Demon King", "DemonKing.png", 1000, 1000, 70, 150, 1000, 1000);
-                    AddLootItem(DemonKing, 9006, 50);
-                    AddLootItem(DemonKing, 9007, 50);
-
-                    return DemonKing;
-
+                    Monster giantSpider =
+                        new Monster("Giant Spider", "GiantSpider.png", 10, 10, 10, 3);
+                    giantSpider.CurrentWeapon = ItemFactory.CreateGameItem(1503);
+                    AddLootItem(giantSpider, 9005, 25);
+                    AddLootItem(giantSpider, 9006, 75);
+                    return giantSpider;
                 default:
                     throw new ArgumentException(string.Format("MonsterType '{0}' does not exist", monsterID));
             }
@@ -40,7 +37,7 @@ namespace Engine.Factories
         {
             if (RandomNumberGenerator.NumberBetween(1, 100) <= percentage)
             {
-                monster.Inventory.Add(new ItemQuantity(itemID, 1));
+                monster.AddItemToInventory(ItemFactory.CreateGameItem(itemID));
             }
         }
     }
